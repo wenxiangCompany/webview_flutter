@@ -98,6 +98,8 @@
     [_webView.scrollView setShowsVerticalScrollIndicator:NO];
     [_webView.scrollView setShowsHorizontalScrollIndicator:NO];
     [_webView.scrollView setBackgroundColor:[UIColor clearColor]];
+    _webView.scrollView.alwaysBounceVertical = NO;
+    _webView.scrollView.bounces = NO;
     _navigationDelegate = [[FLTWKNavigationDelegate alloc] initWithChannel:_channel];
     _webView.UIDelegate = self;
     _webView.navigationDelegate = _navigationDelegate;
