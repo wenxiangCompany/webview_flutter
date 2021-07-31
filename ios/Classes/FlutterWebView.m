@@ -112,9 +112,9 @@
 
     _webView.scrollView.alwaysBounceVertical = NO;
     _webView.scrollView.bounces = NO;
-    _webView.scrollView.setShowsVerticalScrollIndicator = NO;
-    _webView.scrollView.setShowsHorizontalScrollIndicator = NO;
-    _webView.scrollView.setBackgroundColor = [UIColor clearColor];
+    _webView.scrollView.setShowsVerticalScrollIndicator = false;
+    _webView.scrollView.setShowsHorizontalScrollIndicator = false;
+    [_webView.scrollView setBackgroundColor:[UIColor clearColor]];
     [self applySettings:settings];
     // TODO(amirh): return an error if apply settings failed once it's possible to do so.
     // https://github.com/flutter/flutter/issues/36228
