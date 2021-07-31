@@ -112,8 +112,8 @@
 
     _webView.scrollView.alwaysBounceVertical = NO;
     _webView.scrollView.bounces = NO;
-    _webView.scrollView.setShowsVerticalScrollIndicator = false;
-    _webView.scrollView.setShowsHorizontalScrollIndicator = false;
+    _webView.scrollView.showsVerticalScrollIndicator = false;
+    _webView.scrollView.showsHorizontalScrollIndicator = false;
     [_webView.scrollView setBackgroundColor:[UIColor clearColor]];
     [self applySettings:settings];
     // TODO(amirh): return an error if apply settings failed once it's possible to do so.
