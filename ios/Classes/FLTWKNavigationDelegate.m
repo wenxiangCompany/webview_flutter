@@ -21,7 +21,11 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
   [_methodChannel invokeMethod:@"onPageStarted" arguments:@{@"url" : webView.URL.absoluteString}];
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    //防止左右滚动
+    CGPoint point = scrollView.contentOffset;
+    scrollView.contentOffset = CGPointMake(0, point.y);
+}
 - (void)webView:(WKWebView *)webView
     decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
                     decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -63,6 +67,10 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    webView.hidden = NO;
+    [webView.scrollView setShowsVerticalScrollIndicator:NO];
+    [webView.scrollView setShowsHorizontalScrollIndicator:NO];
+    webView.scrollView.bounces = NO;
   [_methodChannel invokeMethod:@"onPageFinished" arguments:@{@"url" : webView.URL.absoluteString}];
 }
 

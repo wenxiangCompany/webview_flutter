@@ -97,6 +97,7 @@
     _webView = [[FLTWKWebView alloc] initWithFrame:frame configuration:configuration];
     _navigationDelegate = [[FLTWKNavigationDelegate alloc] initWithChannel:_channel];
     _webView.UIDelegate = self;
+    _webView.hidden = YES;
     _webView.navigationDelegate = _navigationDelegate;
     __weak __typeof__(self) weakSelf = self;
     [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
@@ -110,17 +111,6 @@
       }
     }
 
-    _webView.scrollView.alwaysBounceVertical = NO;
-    _webView.scrollView.bounces = NO;
-    // [_webView.scrollView setShowsVerticalScrollIndicator:NO];
-    // [_webView.scrollView setShowsHorizontalScrollIndicator:NO];
-    // _webView.scrollView.setShowsVerticalScrollIndicator = false;
-    // _webView.scrollView.setShowsHorizontalScrollIndicator = false;
-    _webView.scrollView.showsVerticalScrollIndicator = false;
-    _webView.scrollView.showsHorizontalScrollIndicator = false;
-    [_webView.scrollView setBackgroundColor:[UIColor clearColor]];
-    _webView.backgroundColor = UIColor.clearColor;
-    _webView.opaque = false;
     [self applySettings:settings];
     // TODO(amirh): return an error if apply settings failed once it's possible to do so.
     // https://github.com/flutter/flutter/issues/36228
